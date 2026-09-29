@@ -14,6 +14,6 @@ See [the add-on guide](infinitive/DOCS.md) for wiring cautions, options, integra
 
 ## Build locally
 
-Build the app image from this repository using the Home Assistant app build tooling with `BUILD_ARCH=amd64` and `BUILD_VERSION` matching `infinitive/config.yaml`. The Dockerfile downloads the upstream amd64 release binary.
+Build the app image from this repository using the Home Assistant app build tooling with `BUILD_ARCH=amd64` and `BUILD_VERSION` matching `infinitive/config.yaml`. The Dockerfile builds Infinitive from upstream source for amd64, avoiding runtime-library mismatches in the upstream release binary.
 
 This add-on is marked **experimental** until a successful build and live RS-485 test have been completed on HAOS hardware.
