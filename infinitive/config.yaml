@@ -1,0 +1,23 @@
+name: Infinitive
+version: 0.1.0
+slug: infinitive
+description: Local interface for Carrier Infinity and Bryant Evolution HVAC systems
+url: https://github.com/acd/infinitive
+arch:
+  - amd64
+startup: services
+boot: auto
+stage: experimental
+init: false
+apparmor: true
+usb: true
+udev: true
+webui: http://[HOST]:[PORT:8081]
+ports:
+  8080/tcp: 8081
+ports_description:
+  8080/tcp: Infinitive web interface and API
+options:
+  serial_device: /dev/ttyUSB0
+schema:
+  serial_device: str
