@@ -15,6 +15,8 @@ To install this add-on from GitHub, first push this folder to a GitHub repositor
 
 In the add-on configuration, set `serial_device` to the device path shown by HAOS for your adapter. The service listens on port `8080` inside the container and is published as port `8081` on the HAOS host.
 
+The add-on requests HAOS UART passthrough so it can access the configured serial device. If HAOS shows a different device path, update `serial_device` before starting the add-on.
+
 ## Connect Home Assistant
 
 The upstream `mww012/hass-infinitive` integration is a separate custom integration, not part of this add-on. It documents HACS custom repository installation and legacy YAML platform configuration. Check that integration's current compatibility with your Home Assistant Core version before relying on it. Configure its host to the HAOS address and its port to the published Infinitive HTTP port (`8081` by default).
