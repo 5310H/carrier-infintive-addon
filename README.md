@@ -16,4 +16,6 @@ See [the add-on guide](infinitive/DOCS.md) for wiring cautions, options, integra
 
 Build the app image from this repository using the Home Assistant app build tooling with `BUILD_ARCH=amd64` and `BUILD_VERSION` matching `infinitive/config.yaml`. The Dockerfile builds Infinitive from upstream source for amd64, avoiding runtime-library mismatches in the upstream release binary.
 
-This add-on is marked **experimental** until a successful build and live RS-485 test have been completed on HAOS hardware.
+## Verification
+
+Tested on Home Assistant OS (amd64) with a USB RS-485 adapter connected to a Carrier Infinity system. Confirmed live temperatures and HVAC controls through the add-on web interface on port 8081.

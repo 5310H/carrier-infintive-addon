@@ -1,13 +1,13 @@
 name: Infinitive
-version: 0.1.3
+version: 0.1.4
 slug: infinitive
 description: Local interface for Carrier Infinity and Bryant Evolution HVAC systems
-url: https://github.com/acd/infinitive
+url: https://github.com/5310H/carrier-infintive-addon
 arch:
   - amd64
 startup: services
 boot: auto
-stage: experimental
+stage: stable
 init: false
 apparmor: true
 uart: true
