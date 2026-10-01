@@ -5,6 +5,7 @@ description: Local interface for Carrier Infinity and Bryant Evolution HVAC syst
 url: https://github.com/5310H/carrier-infintive-addon
 arch:
   - amd64
+  - aarch64
 startup: services
 boot: auto
 stage: stable

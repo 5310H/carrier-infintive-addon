@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/base:latest
+FROM ghcr.io/home-assistant/base:latest AS runtime
 FROM golang:1.24-alpine AS infinitive-builder
 
 ARG BUILD_ARCH
@@ -7,10 +7,14 @@ RUN apk add --no-cache git
 WORKDIR /src
 RUN git clone --depth 1 https://github.com/acd/infinitive.git .
 RUN set -eu; \
-    [ "${BUILD_ARCH}" = "amd64" ] || { echo "Unsupported architecture: ${BUILD_ARCH}" >&2; exit 1; }; \
-    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /infinitive .
+    case "${BUILD_ARCH}" in \
+      amd64) go_arch=amd64 ;; \
+      aarch64) go_arch=arm64 ;; \
+      *) echo "Unsupported architecture: ${BUILD_ARCH}" >&2; exit 1 ;; \
+    esac; \
+    CGO_ENABLED=0 GOOS=linux GOARCH="${go_arch}" go build -trimpath -ldflags="-s -w" -o /infinitive .
 
-FROM ${BUILD_FROM}
+FROM runtime
 
 ARG BUILD_VERSION
 ARG BUILD_ARCH

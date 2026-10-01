@@ -1,6 +1,6 @@
 # Carrier Infinitive add-on for Home Assistant OS
 
-This repository packages [Infinitive](https://github.com/acd/infinitive) as a Home Assistant OS add-on. It targets **amd64** HAOS systems and needs a USB RS-485 adapter connected to the HVAC system's A/B data bus.
+This repository packages [Infinitive](https://github.com/acd/infinitive) as a Home Assistant OS add-on for **amd64** and **aarch64** systems. It needs a USB RS-485 adapter connected to the HVAC system's A/B data bus.
 
 ## Install in Home Assistant
 
@@ -14,8 +14,8 @@ See [the add-on guide](infinitive/DOCS.md) for wiring cautions, options, integra
 
 ## Build locally
 
-Build the app image from this repository using the Home Assistant app build tooling with `BUILD_ARCH=amd64` and `BUILD_VERSION` matching `infinitive/config.yaml`. The Dockerfile builds Infinitive from upstream source for amd64, avoiding runtime-library mismatches in the upstream release binary.
+Build the app image from this repository using the Home Assistant app build tooling with `BUILD_ARCH` set to `amd64` or `aarch64` and `BUILD_VERSION` matching `infinitive/config.yaml`. The Dockerfile maps HAOS `aarch64` to Go `arm64` and builds Infinitive from upstream source for the selected architecture, avoiding runtime-library mismatches in the upstream release binary.
 
 ## Verification
 
-Tested on Home Assistant OS (amd64) with a USB RS-485 adapter connected to a Carrier Infinity system. Confirmed live temperatures and HVAC controls through the add-on web interface on port 8081.
+Verified on Home Assistant OS (amd64) with a USB RS-485 adapter connected to a Carrier Infinity system. The aarch64 build is enabled; it has not yet been hardware-verified.
